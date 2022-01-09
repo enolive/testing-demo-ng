@@ -22,6 +22,7 @@
         "semi": ["error", "never"],
         "quotes": ["error", "single"],
         "comma-dangle": ["error", "always-multiline"],
+        "prefer-const": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {
