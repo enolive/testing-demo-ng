@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent renders correctly 1`] = `
+<img
+  alt="Chuck Norris approves"
+  src="/assets/chuck-norris-logo.jpg"
+/>
+`;
