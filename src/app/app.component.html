@@ -1,21 +1,24 @@
 <header>
-  <h1>Welcome to my app</h1>
-  <figure>
-    <img src="/assets/chuck-norris-logo.jpg" alt="Chuck Norris approves">
-  </figure>
+  <h1>👊 Chuck Norris App 👊</h1>
+  <figure><img src="assets/chuck-norris-logo.jpg" alt="Chuck Norris approves!"></figure>
 </header>
 <main>
-  <div role="status" class="status">
-    <ng-container *ngIf="(jokeText$ | async) as jokeText; else loadingIndicator">
-      <div *ngIf="jokeText.type === 'success'">{{jokeText.text}}</div>
-      <div *ngIf="jokeText.type === 'error'" class="alert alert-danger">{{jokeText.error.message}}</div>
-    </ng-container>
+  <div role="status" class="status-area">
+    <div *ngIf="(joke$ | async) as joke">
+      <ng-container [ngSwitch]="joke.status">
+        <div *ngSwitchCase="'loading'" class="spinner-border">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div *ngSwitchCase="'error'" class="alert alert-danger">
+          an error occurred: {{explain(joke.error)}}
+        </div>
+        <div *ngSwitchDefault>
+          {{joke.data}}
+        </div>
+      </ng-container>
+    </div>
   </div>
-  <button (click)="refreshJoke()" class="btn btn-primary">Refresh</button>
+  <div>
+    <button class="btn btn-primary" (click)="refreshJoke()">Refresh</button>
+  </div>
 </main>
-
-<ng-template #loadingIndicator>
-  <div class="spinner-border">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</ng-template>

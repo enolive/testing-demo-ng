@@ -1,3 +1,6 @@
+.status-area {
+  min-height: 5rem;
+}
 .status {
   min-height: 100px;
 }
